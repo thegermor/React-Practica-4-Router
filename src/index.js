@@ -1,17 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import About from './About';
+import Contact from './Contact';
+ 
+const routing = (
+  <BrowserRouter>
+    <div>
+      <h3>Gerardo Moreno Souffle | React Práctica 4 | Diseño de Interfaces | Ing. Diseño de Interfaces | 8vo. Semestre</h3>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+      </ul>
+      <Routes>
+        <Route exact path="/" component={App} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+      </Routes>
+    </div>
+  </BrowserRouter>
+)
+ 
+ReactDOM.render(routing, document.getElementById('root'));
